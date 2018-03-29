@@ -49,6 +49,12 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.get('/', (req, res) => {
+    res.send({
+        status: 'alive'
+    })
+})
+
 app.use(getUsers)               // [GET]    /users
 app.use(getUser)                // [GET]    /users/:userId
 app.use(joinUser)               // [POST]   /users

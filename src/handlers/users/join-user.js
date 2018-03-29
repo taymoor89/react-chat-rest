@@ -9,10 +9,7 @@ const joinUser = async (req, res, next) => {
         if(!user) {
             user = await User.create(req.body)
         }
-        const result = {
-            user,
-            token: user.id
-        }
+        const result = {user}
         res.status(201).json(result)
     } catch (e) {
         next(e)

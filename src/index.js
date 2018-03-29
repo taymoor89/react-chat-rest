@@ -1,10 +1,11 @@
+import 'babel-polyfill'
 import http from 'http'
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import socketIo from 'socket.io'
-import Conversation from './models/conversation'
+import logger from "morgan";
 
 import {
     getUsers,
@@ -43,6 +44,7 @@ io.on('connection', (socket) => {
 // Connect to mongodb
 mongoose.connect('mongodb://taymoor89:taymoor89@ds227469.mlab.com:27469/homelike')
 
+app.use(logger('dev'))
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
